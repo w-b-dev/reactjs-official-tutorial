@@ -1,50 +1,52 @@
 'use strict';
-// TODO #1
-// I prefer to learn from the full version logic,
-// so no shortcut assignment here
-// const e = React.createElement;
 
-// https://reactjs.org/docs/react-api.html#createelement
-// TODO #2 - Create and return a new React element of the given type.
-// The type argument can be either a tag name string
-//(such as 'div' or 'span'), a React component type
-// (a class or a function), or a React fragment type.
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-class LikeButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var LikeButton = function (_React$Component) {
+  _inherits(LikeButton, _React$Component);
+
+  function LikeButton(props) {
+    _classCallCheck(this, LikeButton);
+
+    var _this = _possibleConstructorReturn(this, (LikeButton.__proto__ || Object.getPrototypeOf(LikeButton)).call(this, props));
+
+    _this.state = {
       liked: false
     };
+    return _this;
   }
 
-  render() {
-    if (this.state.liked) {
-      return 'You liked this.';
+  _createClass(LikeButton, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      if (this.state.liked) {
+        return 'You liked this.';
+      }
+
+      return React.createElement(
+        'button',
+        {
+          onClick: function onClick() {
+            return _this2.setState({
+              liked: true
+            });
+          }
+        },
+        'Like'
+      );
     }
+  }]);
 
-    // return e(  // TODO #1
-    return React.createElement(
-      // TODO #2 - using type as tag-name-string
-      'button',
-      // Defining PROPS
-      {
-        onClick: () =>
-          this.setState({
-            liked: true
-          })
-      },
-      // Defining Children (in this case a text node)
-      'Like'
-    );
-  }
-}
+  return LikeButton;
+}(React.Component);
 
-const domContainer = document.querySelector('#target');
-//TODO #1 Also repeated here
-ReactDOM.render(
-  React.createElement(
-    LikeButton // TODO #2 - using type as React component(class/function)
-  ),
-  domContainer
-);
+var domContainer = document.querySelector('#target');
+ReactDOM.render(React.createElement(LikeButton, null), domContainer);
